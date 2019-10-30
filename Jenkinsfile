@@ -11,17 +11,11 @@ pipeline{
             steps {
                     script {
                         sh """
-                        sonar-scanner \ -Dsonar.projectKey=student16-project -Dsonar.sources=. -Dsonar.host.url=https://master.jenkins-practice.tk:8443 \ -Dsonar.login=8f65556dbeee967d0c5916c6eb4f96bd033ca80f
+                        sonar-scanner -Dsonar.projectKey=student16-project -Dsonar.sources=. -Dsonar.host.url=https://master.jenkins-practice.tk:8443 -Dsonar.login=8f65556dbeee967d0c5916c6eb4f96bd033ca80f
                         """
                     }
                 }
             }
-
-        stage('Quality gate') {
-            steps {
-                waitForQualityGate abortPipeline: true
-            }
-        }
 
     stage('Build') { 
     when {
