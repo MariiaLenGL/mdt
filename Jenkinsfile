@@ -7,15 +7,25 @@ pipeline{
   }
   
   stages{
-    stage('SonarScanner') {
+      stage('Checkout') {
             steps {
-                    script {
-                        sh """
-                        sonar-scanner -Dsonar.projectKey=student16-project -Dsonar.sources=. -Dsonar.host.url=https://master.jenkins-practice.tk:8443 -Dsonar.login=8f65556dbeee967d0c5916c6eb4f96bd033ca80f
-                        """
-                    }
-                }
+                git 'https://github.com/MariiaLenGL/mdt'
             }
+    // stage('SonarScanner') {
+    //             steps {
+    //             withSonarQubeEnv('SonarServer') {
+    //                 sh """
+    //                     ${env.SONAR_HOME}/bin/sonar-scanner \
+    //                     -Dsonar.projectKey=backend:development \
+    //                     -Dsonar.sources=. \
+    //                 script {
+    //                     sh """
+    //                     cd 
+    //                     sonar-scanner -Dsonar.projectKey=student16-project -Dsonar.sources=. -Dsonar.host.url=https://master.jenkins-practice.tk:8443 -Dsonar.login=8f65556dbeee967d0c5916c6eb4f96bd033ca80f
+    //                     """
+    //                 }
+    //             }
+    //         }
 
     stage('Build') { 
     when {
