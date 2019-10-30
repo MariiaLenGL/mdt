@@ -62,7 +62,7 @@ pipeline{
             cd ${WORKSPACE}/www
             tar --exclude='./css' --exclude='./js' -c -z -f ../.tgz ."""
           nexusArtifactUploader artifacts: [[artifactId: 'artifact-student16', \
-                                            classifier: '', file: 'artifact-student16.tgz', \
+                                            classifier: '', file: '*.tgz', \
                                             type: 'tgz']], \
                                             credentialsId: 'student16-jenkins', \
                                             groupId: '', \
